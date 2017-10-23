@@ -12,21 +12,21 @@
     </item>
     <item
         is-multidex="true"
+        jar="/home/haon4658/AndroidStudioProjects/Collathon-Self-location-statistics-App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="12c559dbbeda93d53a0c3a08e0942bd99bde2127">
+        <dex dex="/home/haon4658/AndroidStudioProjects/Collathon-Self-location-statistics-App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_428c5e1c04550d0f59f15c24cb4ab5062b5324c7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/home/haon4658/AndroidStudioProjects/Collathon-Self-location-statistics-App/app/libs/3rdparty_login_library_android_4.1.4.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
         sha1="194d914e51c00c0a5319365eea98050edf6625a9">
         <dex dex="/home/haon4658/AndroidStudioProjects/Collathon-Self-location-statistics-App/app/build/intermediates/transforms/dex/debug/folders/1000/2/3rdparty_login_library_android_4.1.4_15c5ef6a2295e85dd1f4480d5c1d9d85651906dc/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/haon4658/AndroidStudioProjects/Collathon-Self-location-statistics-App/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="f50e264ce1ef0449e8c8a3065094e0861c579d4a">
-        <dex dex="/home/haon4658/AndroidStudioProjects/Collathon-Self-location-statistics-App/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_428c5e1c04550d0f59f15c24cb4ab5062b5324c7/classes.dex" />
     </item>
     <item
         is-multidex="false"
