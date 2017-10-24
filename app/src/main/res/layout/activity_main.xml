@@ -1,12 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="comkimhyeockjin.github.selflocationstatisticsapp.MainActivity">
+    tools:context="com.example.sudalkim.colathon.MainActivity">
 
+    <TextView
+        android:layout_width="46dp"
+        android:layout_height="41dp"
+        android:text="ID"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:layout_alignBaseline="@+id/editText"
+        android:layout_alignBottom="@+id/editText"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:id="@+id/textView2" />
 
+    <TextView
+        android:layout_width="51dp"
+        android:layout_height="43dp"
+        android:text="PW"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:layout_below="@+id/editText"
+        android:layout_toLeftOf="@+id/editText2"
+        android:layout_toStartOf="@+id/editText2"
+        android:id="@+id/textView" />
 
-</LinearLayout>
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="178dp"
+        android:layout_height="53dp"
+        android:layout_above="@+id/editText2"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <EditText
+        android:layout_width="178dp"
+        android:layout_height="51dp"
+        android:inputType="textPassword"
+        android:id="@+id/editText2"
+        android:layout_marginRight="91dp"
+        android:layout_marginEnd="91dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/loginBt"
+        android:layout_width="109dp"
+        android:layout_height="62dp"
+        android:text="Log In"
+        android:layout_marginBottom="155dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

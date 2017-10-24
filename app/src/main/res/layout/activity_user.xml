@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/userNameText"
+        android:layout_width="130dp"
+        android:layout_height="35dp"
+        android:text="사용자 님!"
+        android:textSize="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp" />
+
+    <TextView
+        android:id="@+id/bestPlaceText"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:text="이번달 BEST!"
+        android:background="@drawable/circle"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:layout_alignTop="@+id/userNameText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    
+    <Button
+        android:id="@+id/mapBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="캘린더 보기"
+        android:layout_alignBaseline="@+id/calandarBt"
+        android:layout_alignBottom="@+id/calandarBt"
+        android:layout_toLeftOf="@+id/calandarBt"
+        android:layout_toStartOf="@+id/calandarBt" />
+
+    <Button
+        android:id="@+id/calandarBt"
+        android:gravity="center"
+        android:text="지도 보기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="149dp"
+        android:layout_below="@+id/userNameText"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/graphBt"
+        android:text="통계 보기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/calandarBt"
+        android:layout_alignBottom="@+id/calandarBt"
+        android:layout_toRightOf="@+id/calandarBt"
+        android:layout_toEndOf="@+id/calandarBt" />
+
+
+</RelativeLayout>
