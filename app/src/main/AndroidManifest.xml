@@ -15,19 +15,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
         <activity
             android:name="com.nhn.android.naverlogin.ui.OAuthLoginActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.nhn.android.naverlogin.ui.OAuthLoginInAppBrowserActivity"
             android:label="OAuth2.0 In-app" />
-        <activity android:name=".LoginExampleActivity">
+        <activity android:name=".UserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".LoginExampleActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".MapExampleActivity">
         </activity>
