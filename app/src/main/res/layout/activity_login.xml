@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sudalkim.colathon.MainActivity">
+    tools:context="comkimhyeockjin.github.selflocationstatisticsapp.LoginActivity">
 
-    <TextView
+<!--    <TextView
         android:layout_width="46dp"
         android:layout_height="41dp"
         android:text="ID"
@@ -46,14 +46,19 @@
         android:layout_marginEnd="91dp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true" />-->
 
-    <Button
-        android:id="@+id/loginBt"
-        android:layout_width="109dp"
-        android:layout_height="62dp"
-        android:text="Log In"
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="꺼져"/>
+
+    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+        android:id="@+id/loginBtn"
+        android:layout_width="250dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="155dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>
