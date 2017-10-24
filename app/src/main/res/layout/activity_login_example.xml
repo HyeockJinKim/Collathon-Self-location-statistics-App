@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="comkimhyeockjin.github.selflocationstatisticsapp.LoginExampleActivity">
 
-    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
-        android:id="@+id/btOAuthLoginImg"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp" />
-    
     <Button
         android:id="@+id/calendarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="달력"/>
+        android:text="달력"
+        android:layout_gravity="center"
+        android:layout_marginTop="140dp"/>
 
-</android.support.constraint.ConstraintLayout>
+    <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
+        android:id="@+id/btOAuthLoginImg"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"/>
+
+
+    <Button
+        android:id="@+id/pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="지도 확인용"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+
+
+</LinearLayout>
