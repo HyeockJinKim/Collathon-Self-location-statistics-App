@@ -1,4 +1,4 @@
-package com.example.sudalkim.colathon;
+package comkimhyeockjin.github.selflocationstatisticsapp;
 
 import android.app.Activity;
 import android.os.Bundle;
