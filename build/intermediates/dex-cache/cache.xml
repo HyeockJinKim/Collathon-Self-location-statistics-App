@@ -3,48 +3,174 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="2480e28e60feb011b1e94836f7e157dbad9d9708">
-        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_17657ebcff41ccccb227b0bff8ad57492b059a7d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e1cc2bc7c7b63ebfb89ad6651ace50b65f4261f3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\user\.android\build-cache\ee15e4018a5ba4e48becce2137dde4147448281c\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="f986c2ee54e63f769a178876f2e203c2e95b2ba2">
-        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_171a42ada5009371b64f23cc72ff65a66e327396\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\libs\3rdparty_login_library_android_4.1.4_source.jar"
         jumboMode="true"
         optimize="true"
-        revision="25.0.3"
+        revision="26.0.1"
         sha1="5c821232c173c623e74271c6efd65517e6a10060">
         <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\2\3rdparty_login_library_android_4.1.4_source_396622885548338bf092c068b753cd3f6c0e87d0\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\libs\3rdparty_login_library_android_4.1.4_source.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="5c821232c173c623e74271c6efd65517e6a10060">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\3rdparty_login_library_android_4.1.4_source_396622885548338bf092c068b753cd3f6c0e87d0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\.android\build-cache\a5178f586e33aeab7b1c6a34bfa2d9d4a350de35\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\classes_b56e71251f433420590d5c1c29613db45c39d860.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\.android\build-cache\ee15e4018a5ba4e48becce2137dde4147448281c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f986c2ee54e63f769a178876f2e203c2e95b2ba2">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\classes_171a42ada5009371b64f23cc72ff65a66e327396.jar" />
     </item>
     <item
         is-multidex="true"
         jar="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\libs\3rdparty_login_library_android_4.1.4.jar"
         jumboMode="true"
         optimize="true"
-        revision="25.0.3"
+        revision="26.0.1"
         sha1="194d914e51c00c0a5319365eea98050edf6625a9">
         <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\2\3rdparty_login_library_android_4.1.4_ecdee58b593231b631c0f70f5afac9eb4a01798d\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\.android\build-cache\27198d22c669526406db49e154ac1bd01ea2fb15\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\classes_724aac469eaeea0142a997eb95cb732d665ef7cd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\.android\build-cache\fde47391f545cd08dace55015ceb28b17de1675d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\classes_74cb54dd519df2f580d31dcf7119468c39a72bd2.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_e1cc2bc7c7b63ebfb89ad6651ace50b65f4261f3\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\.android\build-cache\8473aaf95037d11731d9dbe68af6d97e9ff90644\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\classes_48ba352ecab7acc33e5e883b310099b4fbf3858a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_a5a2825b34de3f3f7ae9d3d699d30b462eec82a0.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="254b68c54972dabd1995555b9d50dc254e2eb043">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_17657ebcff41ccccb227b0bff8ad57492b059a7d\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\.android\build-cache\4995aa365c21cea70a5aba8a2698ab9b4047ba3e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\classes_37796e071ce0ff034b0b5a9fab828a8a2d37ec0c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\.android\build-cache\fd84c537abc32d0249b4b43889cca3cdfce00029\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\classes_c4f49ed85fef744ac63393129dbee4253cc1d53e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\.android\build-cache\8b7c79f3d75f297f198c87eb2c3bfcfacc2c6e3e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\classes_1852d62e2662f1d25515a85bf474c86302f23add.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\libs\3rdparty_login_library_android_4.1.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="194d914e51c00c0a5319365eea98050edf6625a9">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\3rdparty_login_library_android_4.1.4_ecdee58b593231b631c0f70f5afac9eb4a01798d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_56cb9135bf1bd704eeaa78bb7e1de36312cfdd96.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\.android\build-cache\8dafafc5084608feb7e93ebd83bf0130f03cd255\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\classes_4d200c9ea4007579dcf896ac5b856a1631389bba.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\.android\build-cache\2e08b41e5db84fad579b62ba79ee334bcae2ed30\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\classes_52fd9cfce2a6f44fd2a3fcde048b72bc7f078495.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\user\.android\build-cache\3c0e0c8d35ea12dfcfb1bec5b5fc6cf1e986c8fe\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\user\AndroidStudioProjects\Collathon-Self-location-statistics-App\app\build\intermediates\pre-dexed\debug\classes_63f61d1de93132f03086ffe86125582b3808cf32.jar" />
     </item>
 
 </items>
