@@ -48,11 +48,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="20dp"
-        android:text="꺼져"/>
-
     <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
         android:id="@+id/loginBtn"
         android:layout_width="250dp"
