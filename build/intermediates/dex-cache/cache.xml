@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\SUDALKIM\Collathon-Self-location-statistics-App\app\libs\3rdparty_login_library_android_4.1.4_source.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="5c821232c173c623e74271c6efd65517e6a10060">
-        <dex dex="C:\Users\SUDALKIM\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\2\3rdparty_login_library_android_4.1.4_source_d5b515f186d408977c4e114aec104660366dc827\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\SUDALKIM\Collathon-Self-location-statistics-App\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="0b67454c42275923e822b6716e037ce243ceed9c">
+        sha1="4c423064976f88e775fad844544d875e61596f1c">
         <dex dex="C:\Users\SUDALKIM\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_a653f0bfb9d8bf925966ff00f2737d7b016366ff\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\SUDALKIM\.android\build-cache\5fb9e6b71a4a7123305507c8050deb88c74d88f6\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f986c2ee54e63f769a178876f2e203c2e95b2ba2">
+        <dex dex="C:\Users\SUDALKIM\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bf93bd9ee8a243441cc1c12cebdeb8d4555bbc53\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -30,12 +30,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\SUDALKIM\.android\build-cache\5fb9e6b71a4a7123305507c8050deb88c74d88f6\output\jars\classes.jar"
+        jar="C:\Users\SUDALKIM\Collathon-Self-location-statistics-App\app\libs\3rdparty_login_library_android_4.1.4_source.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="f986c2ee54e63f769a178876f2e203c2e95b2ba2">
-        <dex dex="C:\Users\SUDALKIM\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bf93bd9ee8a243441cc1c12cebdeb8d4555bbc53\classes.dex" />
+        sha1="5c821232c173c623e74271c6efd65517e6a10060">
+        <dex dex="C:\Users\SUDALKIM\Collathon-Self-location-statistics-App\app\build\intermediates\transforms\dex\debug\folders\1000\2\3rdparty_login_library_android_4.1.4_source_d5b515f186d408977c4e114aec104660366dc827\classes.dex" />
     </item>
     <item
         is-multidex="true"
