@@ -37,6 +37,19 @@ import com.nhn.android.mapviewer.overlay.NMapMyLocationOverlay;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MapExampleActivity extends NMapActivity {
 
@@ -86,15 +99,26 @@ public class MapExampleActivity extends NMapActivity {
                         e.printStackTrace();
                     }
                     showCurrentPlace();
+                    if (mMapLocationManager.isMyLocationFixed()) {
+                        NGeoPoint temp = mMapLocationManager.getMyLocation();
+//                        Log.d(TAG, "pos : "+temp.getLongitude() +", " + temp.getLatitude());
+//                        int markerId = NMapPOIflagType.PIN;
+//                        NMapPOIdata poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
+//                        poiData.beginPOIdata(2);
+////                        poiData.addPOIitem(mMapLocationManager.getMyLocation().getLongitude(), mMapLocationManager.getMyLocation().getLatitude(), "Pizza 777-111", markerId, 0);
+//                        poiData.addPOIitem(127.061, 37.51, "Pizza 123-456", markerId, 0);
+//                        poiData.endPOIdata();
+//                        NMapPOIdataOverlay poIDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+//                        poIDataOverlay.showAllPOIdata(0);
+                    }
                 }
+
             }
         }.start();
 
-
         startMyLocation();
+
     }
-
-
 
 
     private final NMapLocationManager.OnLocationChangeListener onMyLocationChangeListener = new NMapLocationManager.OnLocationChangeListener() {
@@ -133,6 +157,60 @@ public class MapExampleActivity extends NMapActivity {
 
     };
 
+    /**
+     * TODO 파일에서 저장된 장소의 정보 불러온다.
+     */
+    public void loadMyLocationData() {
+        String fileName = "LocationData.bin";
+        try {
+            File saveFile = new File(this.getCacheDir(), fileName);
+            BufferedReader inputStream = new BufferedReader(new FileReader(saveFile.getPath().toString()));
+            String str;
+            while ((str = inputStream.readLine()) != null) {
+                String[] splitedStr = str.split("#");
+                int markerId = NMapPOIflagType.PIN;
+                NMapPOIdata poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
+                poiData.beginPOIdata(2);
+                poiData.addPOIitem(Double.parseDouble(splitedStr[0]), Double.parseDouble(splitedStr[1]), splitedStr[2], markerId, 0);
+                poiData.endPOIdata();
+                NMapPOIdataOverlay poIDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+                poIDataOverlay.showAllPOIdata(0);
+            }
+        } catch (IOException exception) {
+            Log.d(TAG, "File Not Found ");
+            return;
+        }
+
+    }
+
+    /**
+     * TODO 나의 위치를 파일로 저장한다.
+     */
+    public void saveMyLocation(PlaceLikelihood data) {
+        String fileName = "LocationData.bin";
+        try {
+            File saveFile = new File(this.getCacheDir(), fileName);
+            BufferedWriter outputStream = new BufferedWriter(new FileWriter(saveFile.getPath().toString()));
+            Log.d(TAG, saveFile.getPath());
+            outputStream.append(mMapLocationManager.getMyLocation().getLongitude() + "#");
+            outputStream.append(mMapLocationManager.getMyLocation().getLatitude() + "#");
+            outputStream.append(data.getPlace().getName() + "#");
+            outputStream.append(data.getPlace().getPlaceTypes().get(0) + "#");
+            long now = System.currentTimeMillis();
+            Date date = new Date(now);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            outputStream.append(sdf.format(date));
+            outputStream.newLine();
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException exception) {
+            Log.d("Error", "Write Error");
+            return;
+        }
+
+    }
+
+
     private final NMapOverlayManager.OnCalloutOverlayViewListener onCalloutOverlayViewListener = new NMapOverlayManager.OnCalloutOverlayViewListener() {
 
         @Override
@@ -153,7 +231,7 @@ public class MapExampleActivity extends NMapActivity {
 
             // handle overlapped items
             if (itemOverlay instanceof NMapPOIdataOverlay) {
-                NMapPOIdataOverlay poiDataOverlay = (NMapPOIdataOverlay)itemOverlay;
+                NMapPOIdataOverlay poiDataOverlay = (NMapPOIdataOverlay) itemOverlay;
 
                 // check if it is selected by touch event
                 if (!poiDataOverlay.isFocusedBySelectItem()) {
@@ -184,7 +262,7 @@ public class MapExampleActivity extends NMapActivity {
 
             // use custom old callout overlay
             if (overlayItem instanceof NMapPOIitem) {
-                NMapPOIitem poiItem = (NMapPOIitem)overlayItem;
+                NMapPOIitem poiItem = (NMapPOIitem) overlayItem;
 
                 if (poiItem.showRightButton()) {
                     return new NMapCalloutCustomOldOverlay(itemOverlay, overlayItem, itemBounds,
@@ -200,15 +278,16 @@ public class MapExampleActivity extends NMapActivity {
         }
 
     };
+
     private void startMyLocation() {
 
         if (mMyLocationOverlay != null) {
             if (!mOverlayManager.hasOverlay(mMyLocationOverlay)) {
                 mOverlayManager.addOverlay(mMyLocationOverlay);
+
+
             }
-
             if (mMapLocationManager.isMyLocationEnabled()) {
-
                 if (!mMapView.isAutoRotateEnabled()) {
                     mMyLocationOverlay.setCompassHeadingVisible(true);
 
@@ -217,6 +296,8 @@ public class MapExampleActivity extends NMapActivity {
                     mMapView.setAutoRotateEnabled(true, false);
 
                     mMapContainerView.requestLayout();
+
+
                 } else {
                     stopMyLocation();
                 }
@@ -233,6 +314,8 @@ public class MapExampleActivity extends NMapActivity {
 
                     return;
                 }
+
+                loadMyLocationData();
             }
         }
     }
@@ -274,12 +357,27 @@ public class MapExampleActivity extends NMapActivity {
         placeResult.addOnCompleteListener(new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
             @Override
             public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
-                if (task.isSuccessful() && task.getResult() != null){
+                if (task.isSuccessful() && task.getResult() != null) {
+                    double min = Double.MAX_VALUE;
+                    PlaceLikelihood data = null;
                     PlaceLikelihoodBufferResponse places = task.getResult();
-                    PlaceLikelihood placeLikelihood = placeResult.getResult().get(0);
-                    System.out.println(placeLikelihood.getPlace().getName());
-                }
-                else {
+
+                    for (PlaceLikelihood placeLikelihood : places) {
+                        // Build a list of likely places to show the user.
+
+                        final double tempLating = placeLikelihood.getPlace().getLatLng().latitude;
+                        final double tempLongitude = placeLikelihood.getPlace().getLatLng().longitude;
+                        final double distance = Math.pow((lat - tempLating), 2) + Math.pow((lng - tempLongitude), 2);
+                        if (min > distance) {
+                            min = distance;
+                            data = placeLikelihood;
+                        }
+
+                    }
+                    if (mMapLocationManager.isMyLocationFixed() && data != null) {
+                        saveMyLocation(data);
+                    }
+                } else {
                     Log.e(TAG, "Exception: %s", task.getException());
                 }
             }
@@ -312,7 +410,6 @@ public class MapExampleActivity extends NMapActivity {
             }
         }
     }
-
 
 
 }
