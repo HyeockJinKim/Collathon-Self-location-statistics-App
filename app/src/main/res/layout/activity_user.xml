@@ -25,17 +25,17 @@
         android:layout_alignParentEnd="true" />
     
     <Button
-        android:id="@+id/mapBt"
+        android:id="@+id/calandarBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="캘린더 보기"
-        android:layout_alignBaseline="@+id/calandarBt"
-        android:layout_alignBottom="@+id/calandarBt"
-        android:layout_toLeftOf="@+id/calandarBt"
-        android:layout_toStartOf="@+id/calandarBt" />
+        android:layout_alignBaseline="@+id/mapBtn"
+        android:layout_alignBottom="@+id/mapBtn"
+        android:layout_toLeftOf="@+id/mapBtn"
+        android:layout_toStartOf="@+id/mapBtn" />
 
     <Button
-        android:id="@+id/calandarBt"
+        android:id="@+id/mapBtn"
         android:gravity="center"
         android:text="지도 보기"
         android:layout_width="wrap_content"
@@ -45,14 +45,14 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/graphBt"
+        android:id="@+id/graphBtn"
         android:text="통계 보기"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/calandarBt"
-        android:layout_alignBottom="@+id/calandarBt"
-        android:layout_toRightOf="@+id/calandarBt"
-        android:layout_toEndOf="@+id/calandarBt" />
+        android:layout_alignBaseline="@+id/mapBtn"
+        android:layout_alignBottom="@+id/mapBtn"
+        android:layout_toRightOf="@+id/mapBtn"
+        android:layout_toEndOf="@+id/mapBtn" />
 
 
 </RelativeLayout>
