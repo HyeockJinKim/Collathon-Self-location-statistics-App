@@ -34,6 +34,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.naver.maps.open:naver-map-api:2.1.2@aar'
+    compile 'com.tsengvn:Typekit:1.0.0'
 
     testCompile 'junit:junit:4.12'
 }
