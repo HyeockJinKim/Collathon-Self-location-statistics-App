@@ -46,5 +46,11 @@ public class UserActivity extends Activity{
         }
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+
+    }
 
 }
