@@ -10,7 +10,7 @@ import com.tsengvn.typekit.Typekit;
  * Created by SUDALKIM on 2017-11-04.
  */
 
-public class FontActivity extends Application {
+public class FontApplication extends Application {
     @Override
     public void onCreate(){
         super.onCreate();
