@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ import java.util.Date;
 public class MapExampleActivity extends NMapActivity {
 
     private static final String TAG = MapExampleActivity.class.getSimpleName();
+    private static String lastPlace;
     private NMapView mMapView;
     private NMapController mMapController;
     private final String CLIENT_ID = "Rj_aFrA9FICH0OWYVlfS";
@@ -94,31 +96,38 @@ public class MapExampleActivity extends NMapActivity {
             public void run() {
                 while (true) {
                     try {
-                        sleep(5000);
+                        sleep(30000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     showCurrentPlace();
-                    if (mMapLocationManager.isMyLocationFixed()) {
-                        NGeoPoint temp = mMapLocationManager.getMyLocation();
-//                        Log.d(TAG, "pos : "+temp.getLongitude() +", " + temp.getLatitude());
-//                        int markerId = NMapPOIflagType.PIN;
-//                        NMapPOIdata poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
-//                        poiData.beginPOIdata(2);
-////                        poiData.addPOIitem(mMapLocationManager.getMyLocation().getLongitude(), mMapLocationManager.getMyLocation().getLatitude(), "Pizza 777-111", markerId, 0);
-//                        poiData.addPOIitem(127.061, 37.51, "Pizza 123-456", markerId, 0);
-//                        poiData.endPOIdata();
-//                        NMapPOIdataOverlay poIDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
-//                        poIDataOverlay.showAllPOIdata(0);
-                    }
                 }
 
             }
         }.start();
 
+//        DataLoadThread loadingThread = new DataLoadThread();
+//        loadingThread.setDaemon(true);
+//        loadingThread.start();
         startMyLocation();
 
     }
+
+//    class DataLoadThread extends Thread{
+//
+//
+//        @Override
+//        public void run() {
+//            while(true) {
+//                try {
+//                    sleep(20000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                loadMyLocationData();
+//            }
+//        }
+//    }
 
 
     private final NMapLocationManager.OnLocationChangeListener onMyLocationChangeListener = new NMapLocationManager.OnLocationChangeListener() {
@@ -189,20 +198,26 @@ public class MapExampleActivity extends NMapActivity {
     public void saveMyLocation(PlaceLikelihood data) {
         String fileName = "LocationData.bin";
         try {
-            File saveFile = new File(this.getCacheDir(), fileName);
-            BufferedWriter outputStream = new BufferedWriter(new FileWriter(saveFile.getPath().toString()));
-            Log.d(TAG, saveFile.getPath());
-            outputStream.append(mMapLocationManager.getMyLocation().getLongitude() + "#");
-            outputStream.append(mMapLocationManager.getMyLocation().getLatitude() + "#");
-            outputStream.append(data.getPlace().getName() + "#");
-            outputStream.append(data.getPlace().getPlaceTypes().get(0) + "#");
-            long now = System.currentTimeMillis();
-            Date date = new Date(now);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            outputStream.append(sdf.format(date));
-            outputStream.newLine();
-            outputStream.flush();
-            outputStream.close();
+            if(!data.getPlace().getName().equals(lastPlace)) {
+                Intent intent = new Intent(this, LastLocationInfo.class);
+                File saveFile = new File(this.getCacheDir(), fileName);
+                BufferedWriter outputStream = new BufferedWriter(new FileWriter(saveFile.getPath().toString(), true));
+                Log.d(TAG, saveFile.getPath());
+                outputStream.append(mMapLocationManager.getMyLocation().getLongitude() + "#");
+                outputStream.append(mMapLocationManager.getMyLocation().getLatitude() + "#");
+                outputStream.append(data.getPlace().getName() + "#");
+                outputStream.append(data.getPlace().getPlaceTypes().get(0) + "#");
+                long now = System.currentTimeMillis();
+                Date date = new Date(now);
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                outputStream.append(sdf.format(date));
+                outputStream.newLine();
+                outputStream.flush();
+                outputStream.close();
+
+                lastPlace = data.getPlace().getName().toString();
+            }
         } catch (IOException exception) {
             Log.d("Error", "Write Error");
             return;
@@ -314,7 +329,6 @@ public class MapExampleActivity extends NMapActivity {
 
                     return;
                 }
-
                 loadMyLocationData();
             }
         }
