@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f4f6f6">
+
+    <ImageView
+        android:id="@+id/placeBack"
+        android:background="@drawable/bestplace"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:id="@+id/userNameText"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
         android:text="사용자 님!"
-        android:textSize="30dp"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="11dp" />
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"/>
 
     <TextView
         android:id="@+id/bestPlaceText"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
         android:text="이번달 BEST!"
-        android:background="@drawable/circle"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:gravity="center"
         android:layout_alignTop="@+id/userNameText"
         android:layout_alignParentRight="true"
@@ -36,12 +50,19 @@
 
     <Button
         android:id="@+id/mapBtn"
-        android:gravity="center"
-        android:text="지도 보기"
+        android:layout_below="@+id/userNameText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/bestPlaceText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="149dp"
-        android:layout_below="@+id/userNameText"
+        android:text="공대5호관"
+        android:textSize="45dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_below="@+id/bestPlaceText"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -53,6 +74,42 @@
         android:layout_alignBottom="@+id/mapBtn"
         android:layout_toRightOf="@+id/mapBtn"
         android:layout_toEndOf="@+id/mapBtn" />
+  
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="이번 달 00h 00m 을 공대 5호관에서 보냈어요!"
+        android:textSize="17dp"
+        android:layout_above="@+id/mapBtn"
+        android:gravity="center"/>
 
+        <Button
+            android:id="@+id/mapBtn"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/mapbutton"
+            android:layout_above="@+id/graphBtn"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/graphBtn"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/graphbutton"
+            android:layout_above="@+id/settingBtn"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+        <Button
+            android:id="@+id/settingBtn"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/settingsbutton"
+            android:layout_marginBottom="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -256,4 +257,12 @@ public class LoginActivity extends AppCompatActivity {
 //        });
 
 //    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+
+    }
+
 }
