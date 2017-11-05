@@ -53,7 +53,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MapExampleActivity extends NMapActivity {
-
+    private Context mContext = this;
     private static final String TAG = MapExampleActivity.class.getSimpleName();
     private static String lastPlace;
     private NMapView mMapView;
@@ -78,6 +78,7 @@ public class MapExampleActivity extends NMapActivity {
         mMapView.setFocusable(true);
         mMapView.setFocusableInTouchMode(true);
         mMapView.requestFocus();
+
 
         mMapViewerResourceProvider = new NMapViewerResourceProvider(this);
         mOverlayManager = new NMapOverlayManager(this, mMapView, mMapViewerResourceProvider);
