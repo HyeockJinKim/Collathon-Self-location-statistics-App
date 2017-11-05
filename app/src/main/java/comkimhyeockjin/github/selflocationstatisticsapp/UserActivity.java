@@ -31,7 +31,7 @@ public class UserActivity extends Activity{
                 Intent intent1 = new Intent(mContext, MapExampleActivity.class);
                 startActivity(intent1);
             }
-        }
+        });
                                   
         Button graphBtn = (Button) findViewById(R.id.graphBtn);
         graphBtn.setOnClickListener(new View.OnClickListener(){
