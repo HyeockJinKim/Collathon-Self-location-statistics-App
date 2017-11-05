@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -36,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private static String OAUTH_CLIENT_ID = "Rj_aFrA9FICH0OWYVlfS";
     private static String OAUTH_CLIENT_SECRET = "pSX6XttGOk";
-    private static String OAUTH_CLIENT_NAME="gurwls9628";
+    private static String OAUTH_CLIENT_NAME = "gurwls9628";
     private OAuthLoginButton loginButton;
     private OAuthLogin oAuthLogin;
     private String accessToken;
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     private OAuthLoginHandler loginHandler = new OAuthLoginHandler() {
         @Override
         public void run(boolean b) {
-            if(b){
+            if (b) {
                 accessToken = oAuthLogin.getAccessToken(mContext);
                 Toast.makeText(mContext, accessToken, Toast.LENGTH_SHORT).show();
                 Toast.makeText(mContext, "Login Success", Toast.LENGTH_SHORT).show();
@@ -54,11 +55,10 @@ public class LoginActivity extends AppCompatActivity {
                 intent.putExtra("isLogin", true);
                 setResult(RESULT_OK, intent);
                 finish();
-            }
-            else{
+            } else {
                 String errorCode = oAuthLogin.getLastErrorCode(mContext).getCode();
                 String errorDecs = oAuthLogin.getLastErrorDesc(mContext);
-                Toast.makeText(mContext, "errorcode"+errorCode+", errordecs: "+errorDecs, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "errorcode" + errorCode + ", errordecs: " + errorDecs, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent();
                 intent.putExtra("isLogin", false);
@@ -93,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_WRITE);
         }
-
         oAuthLogin = OAuthLogin.getInstance();
         oAuthLogin.init(
                 mContext,
@@ -101,7 +100,38 @@ public class LoginActivity extends AppCompatActivity {
                 OAUTH_CLIENT_SECRET,
                 OAUTH_CLIENT_NAME
         );
-        loginButton = (OAuthLoginButton)findViewById(R.id.loginBtn);
+
+        new Thread(){
+            @Override
+            public void run() {
+                String header = "Bearer "+accessToken;
+                try{
+                    String apiURL = "https://openapi.naver.com/v1/nid/me";
+                    URL url = new URL(apiURL);
+                    HttpURLConnection con = (HttpURLConnection)url.openConnection();
+                    con.setRequestMethod("GET");
+                    con.setRequestProperty("Authorization", header);
+                    int responseCode = con.getResponseCode();
+                    BufferedReader br;
+                    if(responseCode==200) { // 정상 호출
+                        br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    } else {  // 에러 발생
+                        br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+                    }
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+                    while ((inputLine = br.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    br.close();
+                    System.out.println(response.toString()+"23444");
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+        }.start();
+
+        loginButton = (OAuthLoginButton) findViewById(R.id.loginBtn);
         loginButton.setOAuthLoginHandler(loginHandler);
         loginButton.setBgResourceId(R.drawable.white_naver_login);
 
@@ -197,14 +227,14 @@ public class LoginActivity extends AppCompatActivity {
 //        });
     }
 
+
     @Override
-    public void onRequestPermissionsResult(int requestCode, String [] permission, int [] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permission, int[] grantResults) {
         switch (requestCode) {
             case PERMISSION_INTERNET:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(mContext, "INTERNET 권한 승인", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(mContext, "권한 거부.", Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -212,8 +242,7 @@ public class LoginActivity extends AppCompatActivity {
             case PERMISSION_COAST_LOCATION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(mContext, "Location 권한 승인", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(mContext, "권한 거부.", Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -222,8 +251,7 @@ public class LoginActivity extends AppCompatActivity {
             case PERMISSION_FINE_LOCATION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(mContext, "Location 권한 승인", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(mContext, "권한 거부.", Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -231,8 +259,7 @@ public class LoginActivity extends AppCompatActivity {
             case PERMISSION_WRITE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(mContext, "Write 권한 승인", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(mContext, "권한 거부.", Toast.LENGTH_SHORT).show();
                     finish();
                 }
