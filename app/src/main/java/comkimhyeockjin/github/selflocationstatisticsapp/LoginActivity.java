@@ -20,14 +20,13 @@ import com.nhn.android.naverlogin.OAuthLoginHandler;
 import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.UUID;
-
 public class LoginActivity extends AppCompatActivity {
 
     private final static int PERMISSION_INTERNET = 1;
@@ -50,11 +49,43 @@ public class LoginActivity extends AppCompatActivity {
                 accessToken = oAuthLogin.getAccessToken(mContext);
                 Toast.makeText(mContext, accessToken, Toast.LENGTH_SHORT).show();
                 Toast.makeText(mContext, "Login Success", Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent();
-                intent.putExtra("isLogin", true);
-                setResult(RESULT_OK, intent);
-                finish();
+                new Thread(){
+                    @Override
+                    public void run() {
+                        String header = "Bearer "+accessToken;
+                        try{
+                            Intent intent = new Intent();
+                            JSONParser jsonParser = new JSONParser();
+                            String apiURL = "https://openapi.naver.com/v1/nid/me";
+                            URL url = new URL(apiURL);
+                            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+                            con.setRequestMethod("GET");
+                            con.setRequestProperty("Authorization", header);
+                            int responseCode = con.getResponseCode();
+                            BufferedReader br;
+                            if(responseCode==200) {
+                                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                            } else {
+                                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+                            }
+                            String inputLine;
+                            StringBuffer response = new StringBuffer();
+                            while ((inputLine = br.readLine()) != null) {
+                                response.append(inputLine);
+                            }
+                            br.close();
+                            JSONObject jsonObject = (JSONObject) jsonParser.parse(response.toString());
+                            JSONObject res = (JSONObject) jsonObject.get("response");
+                            intent.putExtra("isLogin", true);
+                            intent.putExtra("name", res.get("name").toString());
+                            setResult(RESULT_OK, intent);
+                            System.out.println(response.toString());
+                            finish();
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        }
+                    }
+                }.start();
             } else {
                 String errorCode = oAuthLogin.getLastErrorCode(mContext).getCode();
                 String errorDecs = oAuthLogin.getLastErrorDesc(mContext);
@@ -101,39 +132,10 @@ public class LoginActivity extends AppCompatActivity {
                 OAUTH_CLIENT_NAME
         );
 
-        new Thread(){
-            @Override
-            public void run() {
-                String header = "Bearer "+accessToken;
-                try{
-                    String apiURL = "https://openapi.naver.com/v1/nid/me";
-                    URL url = new URL(apiURL);
-                    HttpURLConnection con = (HttpURLConnection)url.openConnection();
-                    con.setRequestMethod("GET");
-                    con.setRequestProperty("Authorization", header);
-                    int responseCode = con.getResponseCode();
-                    BufferedReader br;
-                    if(responseCode==200) { // 정상 호출
-                        br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    } else {  // 에러 발생
-                        br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-                    }
-                    String inputLine;
-                    StringBuffer response = new StringBuffer();
-                    while ((inputLine = br.readLine()) != null) {
-                        response.append(inputLine);
-                    }
-                    br.close();
-                    System.out.println(response.toString()+"23444");
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-            }
-        }.start();
-
         loginButton = (OAuthLoginButton) findViewById(R.id.loginBtn);
         loginButton.setOAuthLoginHandler(loginHandler);
         loginButton.setBgResourceId(R.drawable.white_naver_login);
+
 
 //        Button button = (Button) findViewById(R.id.calendarButton);
 //        button.setOnClickListener(new View.OnClickListener() {
