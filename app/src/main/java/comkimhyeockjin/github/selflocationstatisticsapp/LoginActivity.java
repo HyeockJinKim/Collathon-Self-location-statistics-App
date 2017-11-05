@@ -30,6 +30,9 @@ import java.util.UUID;
 public class LoginActivity extends AppCompatActivity {
 
     private final static int PERMISSION_INTERNET = 1;
+    private final static int PERMISSION_FINE_LOCATION = 2;
+    private final static int PERMISSION_COAST_LOCATION = 3;
+    private final static int PERMISSION_WRITE = 4;
 
     private static String OAUTH_CLIENT_ID = "Rj_aFrA9FICH0OWYVlfS";
     private static String OAUTH_CLIENT_SECRET = "pSX6XttGOk";
@@ -74,6 +77,21 @@ public class LoginActivity extends AppCompatActivity {
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, PERMISSION_INTERNET);
+        }
+
+        permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_FINE_LOCATION);
+        }
+
+        permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_COAST_LOCATION);
+        }
+
+        permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_WRITE);
         }
 
         oAuthLogin = OAuthLogin.getInstance();
@@ -185,6 +203,34 @@ public class LoginActivity extends AppCompatActivity {
             case PERMISSION_INTERNET:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(mContext, "INTERNET 권한 승인", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(mContext, "권한 거부.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                return;
+            case PERMISSION_COAST_LOCATION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(mContext, "Location 권한 승인", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(mContext, "권한 거부.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                return;
+
+            case PERMISSION_FINE_LOCATION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(mContext, "Location 권한 승인", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(mContext, "권한 거부.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                return;
+            case PERMISSION_WRITE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(mContext, "Write 권한 승인", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Toast.makeText(mContext, "권한 거부.", Toast.LENGTH_SHORT).show();

@@ -34,6 +34,22 @@
         android:text="이번달 BEST!"
         android:textSize="15dp"
         android:gravity="center"
+        android:layout_alignTop="@+id/userNameText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    
+    <Button
+        android:id="@+id/calandarBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="캘린더 보기"
+        android:layout_alignBaseline="@+id/mapBtn"
+        android:layout_alignBottom="@+id/mapBtn"
+        android:layout_toLeftOf="@+id/mapBtn"
+        android:layout_toStartOf="@+id/mapBtn" />
+
+    <Button
+        android:id="@+id/mapBtn"
         android:layout_below="@+id/userNameText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />
@@ -49,6 +65,16 @@
         android:layout_below="@+id/bestPlaceText"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:id="@+id/graphBtn"
+        android:text="통계 보기"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/mapBtn"
+        android:layout_alignBottom="@+id/mapBtn"
+        android:layout_toRightOf="@+id/mapBtn"
+        android:layout_toEndOf="@+id/mapBtn" />
+  
     <TextView
         android:id="@+id/timeText"
         android:layout_width="match_parent"
@@ -75,6 +101,7 @@
             android:layout_above="@+id/settingBtn"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
+
 
         <Button
             android:id="@+id/settingBtn"
