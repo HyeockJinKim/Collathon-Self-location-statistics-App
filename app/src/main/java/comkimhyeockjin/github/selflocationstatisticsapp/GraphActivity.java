@@ -39,14 +39,14 @@ public class GraphActivity extends Activity {
             while ((str = inputStream.readLine()) != null) {
                 String[] splitedStr = str.split("#");
                 String name = splitedStr[2];
-                if (!lastName.equals("")) {
+
                     String[] time = splitedStr[4].split(" ")[1].split(":");
                     int hour = Integer.parseInt(time[0]);
                     int min = Integer.parseInt(time[1]);
                     if (hour < lastHour) {
                         hour += 24;
                     }
-
+                if (!lastName.equals("")) {
                     int totalMin = (hour*60+min) - (lastHour*60+lastMin);
 
                     if (timeMap.containsKey(lastName)) {
@@ -55,6 +55,8 @@ public class GraphActivity extends Activity {
                     timeMap.put(lastName, totalMin);
                 }
                 lastName = name;
+                lastHour = hour;
+                lastMin = min;
 
             }
         } catch (IOException exception) {
