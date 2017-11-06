@@ -23,20 +23,18 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     compile files('libs/3rdparty_login_library_android_4.1.4.jar')
     compile files('libs/3rdparty_login_library_android_4.1.4_source.jar')
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.naver.maps.open:naver-map-api:2.1.2@aar'
-
     compile 'com.google.android.gms:play-services:11.2.0'
     compile 'com.tsengvn:Typekit:1.0.0'
-
     testCompile 'junit:junit:4.12'
+    compile 'org.apache.clerezza.ext:org.json.simple:0.4'
 }

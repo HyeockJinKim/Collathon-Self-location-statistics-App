@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 
@@ -51,6 +53,9 @@ public class UserActivity extends Activity{
             finish();
         } else {
             boolean isLogin = data.getExtras().getBoolean("isLogin");
+            String name = data.getExtras().getString("name");
+            TextView userNameText = (TextView) findViewById(R.id.userNameText);
+            userNameText.setText(name + "님");
             if (!isLogin) {
                 finish();
             }
