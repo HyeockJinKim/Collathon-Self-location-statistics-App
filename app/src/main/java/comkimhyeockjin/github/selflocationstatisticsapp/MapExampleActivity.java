@@ -97,7 +97,7 @@ public class MapExampleActivity extends NMapActivity {
             public void run() {
                 while (true) {
                     try {
-                        sleep(30000);
+                        sleep(10000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -199,26 +199,27 @@ public class MapExampleActivity extends NMapActivity {
     public void saveMyLocation(PlaceLikelihood data) {
         String fileName = "LocationData.bin";
         try {
-            if(!data.getPlace().getName().equals(lastPlace)) {
-                Intent intent = new Intent(this, LastLocationInfo.class);
-                File saveFile = new File(this.getCacheDir(), fileName);
-                BufferedWriter outputStream = new BufferedWriter(new FileWriter(saveFile.getPath().toString(), true));
-                Log.d(TAG, saveFile.getPath());
-                outputStream.append(mMapLocationManager.getMyLocation().getLongitude() + "#");
-                outputStream.append(mMapLocationManager.getMyLocation().getLatitude() + "#");
-                outputStream.append(data.getPlace().getName() + "#");
-                outputStream.append(data.getPlace().getPlaceTypes().get(0) + "#");
-                long now = System.currentTimeMillis();
-                Date date = new Date(now);
-
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                outputStream.append(sdf.format(date));
-                outputStream.newLine();
-                outputStream.flush();
-                outputStream.close();
-
-                lastPlace = data.getPlace().getName().toString();
+            File saveFile = new File(this.getCacheDir(), fileName);
+            BufferedWriter outputStream = new BufferedWriter(new FileWriter(saveFile.getPath().toString(), true));
+            Log.d(TAG, saveFile.getPath());
+            outputStream.append(mMapLocationManager.getMyLocation().getLongitude() + "#");
+            outputStream.append(mMapLocationManager.getMyLocation().getLatitude() + "#");
+            if(data.getPlace().getName().toString().equals("충남대산학연")) {
+                outputStream.append("충남대 공대5호관#");
             }
+            else{
+                outputStream.append(data.getPlace().getName() + "#");
+            }
+            outputStream.append(data.getPlace().getPlaceTypes().get(0) + "#");
+            long now = System.currentTimeMillis();
+            Date date = new Date(now);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            outputStream.append(sdf.format(date));
+            outputStream.newLine();
+            outputStream.flush();
+            outputStream.close();
+
         } catch (IOException exception) {
             Log.d("Error", "Write Error");
             return;
