@@ -33,25 +33,28 @@ public class GraphActivity extends Activity {
         try {
             File saveFile = new File(this.getCacheDir(), fileName);
             BufferedReader inputStream = new BufferedReader(new FileReader(saveFile.getPath().toString()));
-            String str;
+            String str, lastName="";
             int lastHour=0, lastMin = 0;
             Map<String, Integer> timeMap = new HashMap<>();
             while ((str = inputStream.readLine()) != null) {
                 String[] splitedStr = str.split("#");
                 String name = splitedStr[2];
+                if (!lastName.equals("")) {
+                    String[] time = splitedStr[4].split(" ")[1].split(":");
+                    int hour = Integer.parseInt(time[0]);
+                    int min = Integer.parseInt(time[1]);
+                    if (hour < lastHour) {
+                        hour += 24;
+                    }
 
-                String[] time = splitedStr[4].split(" ")[1].split(":");
-                int hour = Integer.parseInt(time[0]);
-                int min = Integer.parseInt(time[1]);
-                if (hour < lastHour) {
-                    hour += 24;
-                }
+                    int totalMin = (hour*60+min) - (lastHour*60+lastMin);
 
-                int totalMin = (hour*60+min) - (lastHour*60+lastMin);
-                if (timeMap.containsKey(name)) {
-                    totalMin += timeMap.get(name);
+                    if (timeMap.containsKey(lastName)) {
+                        totalMin += timeMap.get(lastName);
+                    }
+                    timeMap.put(lastName, totalMin);
                 }
-                timeMap.put(name, totalMin);
+                lastName = name;
 
             }
         } catch (IOException exception) {
