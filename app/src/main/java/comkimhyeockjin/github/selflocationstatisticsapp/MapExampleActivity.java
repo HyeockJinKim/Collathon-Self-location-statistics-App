@@ -55,7 +55,7 @@ import java.util.Date;
 public class MapExampleActivity extends NMapActivity {
     private Context mContext = this;
     private static final String TAG = MapExampleActivity.class.getSimpleName();
-    private static String lastPlace;
+    private static String lastPlace = "";
     private NMapView mMapView;
     private NMapController mMapController;
     private final String CLIENT_ID = "Rj_aFrA9FICH0OWYVlfS";
@@ -97,7 +97,7 @@ public class MapExampleActivity extends NMapActivity {
             public void run() {
                 while (true) {
                     try {
-                        sleep(10000);
+                        sleep(600000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -198,32 +198,42 @@ public class MapExampleActivity extends NMapActivity {
      */
     public void saveMyLocation(PlaceLikelihood data) {
         String fileName = "LocationData.bin";
-        try {
-            File saveFile = new File(this.getCacheDir(), fileName);
-            BufferedWriter outputStream = new BufferedWriter(new FileWriter(saveFile.getPath().toString(), true));
-            Log.d(TAG, saveFile.getPath());
-            outputStream.append(mMapLocationManager.getMyLocation().getLongitude() + "#");
-            outputStream.append(mMapLocationManager.getMyLocation().getLatitude() + "#");
-            if(data.getPlace().getName().toString().equals("충남대산학연")) {
-                outputStream.append("충남대 공대5호관#");
-            }
-            else{
-                outputStream.append(data.getPlace().getName() + "#");
-            }
-            outputStream.append(data.getPlace().getPlaceTypes().get(0) + "#");
-            long now = System.currentTimeMillis();
-            Date date = new Date(now);
+        String place = "";
+        place = data.getPlace().getName().toString();
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            outputStream.append(sdf.format(date));
-            outputStream.newLine();
-            outputStream.flush();
-            outputStream.close();
+        if (place.equals(lastPlace)) {
+            try {
+                File saveFile = new File(this.getCacheDir(), fileName);
+                BufferedWriter outputStream = new BufferedWriter(new FileWriter(saveFile.getPath().toString(), true));
+                Log.d(TAG, saveFile.getPath());
+                outputStream.append(mMapLocationManager.getMyLocation().getLongitude() + "#");
+                outputStream.append(mMapLocationManager.getMyLocation().getLatitude() + "#");
+                if (data.getPlace().getName().toString().equals("충남대산학연")) {
+                    outputStream.append("충남대 공대5호관#");
+                } else if (data.getPlace().getName().toString().equals("충남대학교 군사학부")) {
+                    outputStream.append("충남대 기숙사#");
+                } else {
+                    outputStream.append(data.getPlace().getName() + "#");
+                }
+                outputStream.append(data.getPlace().getPlaceTypes().get(0) + "#");
+                long now = System.currentTimeMillis();
+                Date date = new Date(now);
 
-        } catch (IOException exception) {
-            Log.d("Error", "Write Error");
-            return;
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                outputStream.append(sdf.format(date));
+                outputStream.newLine();
+                outputStream.flush();
+                outputStream.close();
+
+            } catch (IOException exception) {
+                Log.d("Error", "Write Error");
+                return;
+            }
+
         }
+        lastPlace = place;
+
+
 
     }
 

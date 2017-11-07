@@ -55,6 +55,7 @@ public class GraphActivity extends DemoBase implements OnChartValueSelectedListe
             BufferedReader inputStream = new BufferedReader(new FileReader(saveFile.getPath().toString()));
             String str, lastName="";
             int lastHour=0, lastMin = 0;
+            timeMap.put("이동시간",0);
 
             while ((str = inputStream.readLine()) != null) {
                 String[] splitedStr = str.split("#");
@@ -67,12 +68,15 @@ public class GraphActivity extends DemoBase implements OnChartValueSelectedListe
                         hour += 24;
                     }
                 if (!lastName.equals("")) {
-                    int totalMin = (hour*60+min) - (lastHour*60+lastMin);
+                    int totalMin = 10;
 
                     if (timeMap.containsKey(lastName)) {
                         totalMin += timeMap.get(lastName);
                     }
                     timeMap.put(lastName, totalMin);
+                    if ((hour*60+min) - (lastHour*60+lastMin) > 10) {
+                        timeMap.put("이동시간", ((hour * 60 + min) - (lastHour * 60 + lastMin) - 10) + timeMap.get("이동시간"));
+                    }
                 }
                 lastName = name;
                 lastHour = hour;
